@@ -76,7 +76,7 @@ export default {
     chartYearsRangeSlider: [1999, 2014]
   }),
   computed: {
-    ...mapState(['pieChartDataTypes', 'pieChartsData', 'countries', 'selectedCountry', 'yearsRange']),
+    ...mapState(['pieChartDataTypes', 'pieChartsData', 'countries', 'selectedCountry', 'yearsRange', 'yearsRangeSlider']),
     pieFormattedChartsData: function () {
       return map(this.pieChartsData, (data, key) => ({
         data: map(data, ({ name, value }, index) => ({ name: key === 'month' ? monthsMap[index] : name, y: value })),
@@ -101,6 +101,8 @@ export default {
     if (isNil(this.pieChartsData)) {
       this.updateCharts();
     }
+
+    this.chartYearsRangeSlider = this.yearsRangeSlider;
   },
   methods: {
     ...mapActions({

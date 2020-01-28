@@ -146,6 +146,7 @@ export default {
     @import "../../common/styles/constants";
 
     .controlsContainer {
+        width: 100%;
         display: flex;
         padding: 60px 20px 0 20px;
         flex-direction: column;

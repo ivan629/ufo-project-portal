@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { isNil, map } from 'lodash';
+import { isNil, map, has } from 'lodash';
 import Highcharts from 'highcharts';
 import { darkChartTheme } from '../thems';
 
@@ -149,7 +149,10 @@ export default {
     getGroupedUfoItems (data_type) {
       if (!isNil(this.activeChartType) && !isNil(this.stockChartData)) {
         // eslint-disable-next-line camelcase
-        return map(this.stockChartData[this.activeChartType][data_type], ({ milliseconds_date, value }) => [milliseconds_date, value]);
+        return has(this.stockChartData, this.activeChartType)
+          // eslint-disable-next-line camelcase
+          ? map(this.stockChartData[this.activeChartType][data_type], ({ milliseconds_date, value }) => [milliseconds_date, value])
+          : [];
       }
     },
     changeActiveChartType (newChartType) {
