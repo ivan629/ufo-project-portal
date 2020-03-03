@@ -67,6 +67,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  @import '../common/styles/mixins';
+
    .appAnimatedBackgroundContainer {
      position: absolute;
      height: 100%;
@@ -78,15 +80,12 @@ export default {
                          rgba(0, 0, 0, 0.7)
          ),
          url("../assets/appAnimatedBackgroundImage.png");
-         -webkit-background-size: cover;
-         -moz-background-size: cover;
-         -o-background-size: cover;
-         background-size: cover;
-         overflow: hidden;
          height: 100vh;
          width: 100%;
          position: fixed;
          transform: scale(1.1);
+
+         @include image-background-size-cover()
       }
 
       .particlesBackground {

@@ -1,5 +1,3 @@
 import darkChartTheme from './darkChartTheme';
 
-export {
-  darkChartTheme
-};
+export { darkChartTheme };

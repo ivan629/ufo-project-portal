@@ -10,14 +10,17 @@ const ufoService = new Vue({
     toggleLoading: null,
     serverApi: null
   },
+
   created () {
     const { VUE_APP_FD_SERVER_URL } = process.env;
     this.serverApi = isNil(VUE_APP_FD_SERVER_URL) ? '' : `${process.env.VUE_APP_FD_SERVER_URL}`;
   },
+
   methods: {
     setToggleLoadingCallback (callback) {
       this.toggleLoading = callback;
     },
+
     async fetchStatisticChartData (start, stop, country) {
       return await this.fetchHelper(
           `${this.serverApi}/${STATISTIC_CHARTS_DATA_API}`,
@@ -27,9 +30,11 @@ const ufoService = new Vue({
           }
       );
     },
+
     async fetchGlobeMapData (filterData) {
       return await this.fetchHelper(`${this.serverApi}/${GLOBE_DATA_API}`, filterData);
     },
+
     async fetchHelper (api, body) {
       this.toggleLoading();
 
@@ -43,6 +48,7 @@ const ufoService = new Vue({
       });
 
       this.toggleLoading();
+
       return await globeMapData.json();
     }
   }

@@ -7,7 +7,7 @@
 <script>
 import { isNil } from 'lodash';
 import Highcharts from 'highcharts';
-import { darkChartTheme } from '../thems';
+import { darkChartTheme } from '../../thems';
 
 Highcharts.theme = darkChartTheme(Highcharts);
 Highcharts.setOptions(Highcharts.theme);
@@ -58,7 +58,7 @@ export default {
           }
         },
         series: [{
-          name: 'Brands',
+          name: null,
           colorByPoint: true,
           data: this.pieChartData.data
         }]

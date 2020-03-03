@@ -76,7 +76,14 @@ export default {
     chartYearsRangeSlider: [1999, 2014]
   }),
   computed: {
-    ...mapState(['pieChartDataTypes', 'pieChartsData', 'countries', 'selectedCountry', 'yearsRange', 'yearsRangeSlider']),
+    ...mapState([
+      'pieChartDataTypes',
+      'pieChartsData',
+      'countries',
+      'selectedCountry',
+      'yearsRange',
+      'yearsRangeSlider'
+    ]),
     pieFormattedChartsData: function () {
       return map(this.pieChartsData, (data, key) => ({
         data: map(data, ({ name, value }, index) => ({ name: key === 'month' ? monthsMap[index] : name, y: value })),
@@ -114,8 +121,8 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-    @import "../common/styles/constants";
+<style scoped lang='scss'>
+    @import '../../common/styles/constants';
 
     .chartPageContainer {
         display: flex;
@@ -126,6 +133,10 @@ export default {
         margin-top: 70px;
         border: 1px solid $dark;
         background-color: $black-transparent;
+
+        .chartsContainer .pieChartsContainer {
+          display: flex;
+        }
 
         .chartsControls {
             padding-top: 5px;
@@ -161,10 +172,6 @@ export default {
                 max-width: 230px;
                 border-radius: 0;
             }
-        }
-
-        .chartsContainer .pieChartsContainer {
-                display: flex;
         }
     }
 </style>

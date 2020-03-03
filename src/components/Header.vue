@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    @import "../common/styles/constants";
+    @import '../common/styles/constants';
 
     .headerContainer {
         width: 100%;

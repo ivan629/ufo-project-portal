@@ -17,13 +17,13 @@
 <script>
 import { isNil } from 'lodash';
 import { OrbitSpinner } from 'epic-spinners';
+import { createNamespacedHelpers } from 'vuex';
 
 import Header from './Header';
-import UfoChartsStatistic from './UfoChartsStatistic';
-import GlobeContainer from './globe/GlobeContainer';
+import GlobeContainer from './globeMapStatistic/GlobeContainer';
+import UfoChartsStatistic from './chartsStatistic/UfoChartsStatistic';
 import variables from '../common/styles/_constants.scss';
 
-import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapGetters } = createNamespacedHelpers('commonModule');
 
 export default {
@@ -43,12 +43,15 @@ export default {
   },
   created () {
     const { VUE_APP_FD_SERVER_URL } = process.env;
+
     this.serverApi = isNil(VUE_APP_FD_SERVER_URL) ? null : `${process.env.VUE_APP_FD_SERVER_URL}`;
   }
 };
 </script>
 
 <style scoped lang="scss">
+  @import '../common/styles/mixins';
+
   .rootContainer {
     display: flex;
     justify-content: center;
@@ -59,13 +62,10 @@ export default {
       z-index: 1;
       width: 100%;
       height: 100%;
-      justify-content: center;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
       position: absolute;
+      justify-content: center;
+
+      @include no-user-selection();
     }
   }
 </style>

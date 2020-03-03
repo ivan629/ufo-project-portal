@@ -34,9 +34,9 @@
 <script>
 import { isNil, map, has } from 'lodash';
 import Highcharts from 'highcharts';
-import { darkChartTheme } from '../thems';
-
 import { createNamespacedHelpers } from 'vuex';
+
+import { darkChartTheme } from '../../thems';
 const { mapActions, mapState } = createNamespacedHelpers('statisticModule');
 
 Highcharts.theme = darkChartTheme(Highcharts);
@@ -145,16 +145,15 @@ export default {
         type: this.isAreaCurrentChartType ? CHART_TYPES.AREA : CHART_TYPES.COLUMN
       });
     },
-    // eslint-disable-next-line camelcase
+    /*eslint-disable */
     getGroupedUfoItems (data_type) {
       if (!isNil(this.activeChartType) && !isNil(this.stockChartData)) {
-        // eslint-disable-next-line camelcase
         return has(this.stockChartData, this.activeChartType)
-          // eslint-disable-next-line camelcase
           ? map(this.stockChartData[this.activeChartType][data_type], ({ milliseconds_date, value }) => [milliseconds_date, value])
           : [];
       }
     },
+    /* eslint-enable */
     changeActiveChartType (newChartType) {
       this.activeChartType = newChartType;
     },
@@ -169,7 +168,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    @import "../common/styles/constants";
+    @import '../../common/styles/constants';
 
     .stockChartContainer {
         .chartContainer {
@@ -189,11 +188,11 @@ export default {
                 font-size: 14px;
                 padding: 0 5px;
                 height: 25px;
-                color: $white;
                 border-radius: 0;
                 border-color: transparent;
+                color: $white;
 
-                &.bottomGroupToggleChartType {
+              &.bottomGroupToggleChartType {
                     color: $blue;
                 }
 

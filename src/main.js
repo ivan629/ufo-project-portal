@@ -12,9 +12,7 @@ import store from './store';
 
 const { geopoliticalMapOptions } = require('../package.json');
 
-Vue.use(VueGoogleMaps, {
-  load: geopoliticalMapOptions
-});
+Vue.use(VueGoogleMaps, { load: geopoliticalMapOptions });
 Vue.use(Vuex);
 stockInit(Highcharts);
 Vue.use(VueParticles);
